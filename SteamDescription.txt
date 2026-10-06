@@ -1,0 +1,20 @@
+Removes the lag of the History tab graph in long-running colonies.
+
+[h2]The History graph gets slower every in-game year[/h2]The graph keeps one record about every half day for wealth, population, mood and threat points, and never drops old ones. After a few hundred in-game years, opening the History tab makes the game stutter, worse while the game is running.
+
+[b]Cause:[/b] While the game runs, vanilla rebuilds every curve of the graph from the full history on every tick ([i]HistoryAutoRecorderGroup.DrawGraph[/i]), then draws one line segment per record. Its built-in point reduction only skips about one point in five, so with 21,900 records the wealth graph alone draws about 70,000 segments per frame. Every event mark (raids, marriages...) is also drawn on its own, even when hundreds of them land on the same pixel.
+
+[b]Fix:[/b][list]
+[*]Curves are rebuilt only when a new record is added (about twice a day in game) or when you pick another range.
+[*]The shown range is split into 480 slices and each slice keeps its lowest and highest record, so peaks and dips stay visible. A curve now has at most about 1,000 points instead of tens of thousands.
+[*]Records outside the shown range keep their lowest and highest values, so the vertical scale is exactly the same as before.
+[*]Short ranges (Last 30 / 100 / 300 days in most colonies) still show every record.
+[*]Event marks that land on the same pixel with the same color are drawn once; every mark still shows its tooltip.
+[/list]
+
+[h2]Notes[/h2][list]
+[*]Safe to add to or remove from an existing save. History data is not changed.
+[*]Works with any graph group, including ones added by other mods.
+[/list]
+[hr][/hr]
+This mod was developed with the help of AI coding tools (Claude Code). Full source code is included in the Source folder and on [url=https://github.com/ifchen0/HistoryGraphPerformanceFix]GitHub[/url] for review.
