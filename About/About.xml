@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>History Graph Performance Fix</name>
+  <name>[DEPRECATED] History Graph Performance Fix</name>
   <author>ifchen0</author>
   <packageId>ifchen0.historygraphperformancefix</packageId>
   <url>https://github.com/ifchen0/HistoryGraphPerformanceFix</url>
   <supportedVersions><li>1.6</li></supportedVersions>
-  <description>Removes the lag of the History tab graph in long-running colonies.
+  <description>Deprecated: this mod is now part of Vanilla Tune-Up: Fixes &amp; Tweaks and will not be updated further. Please switch to that mod.
+
+Removes the lag of the History tab graph in long-running colonies.
 
 Vanilla rebuilds every graph curve from the full history on every tick while the game runs, and draws one line segment per record (tens of thousands of segments per frame after a few hundred in-game years). Every event mark (raids, marriages...) is drawn separately even when hundreds land on the same pixel.
 
